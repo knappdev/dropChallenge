@@ -57,6 +57,8 @@ class MainViewModel(
     }
 
     private fun processInputList(inputLines: List<String>){
+        if(!internetConnectionWithMessage()) return
+
         showOrHideDetailButtonMLD.postValue(false)
         val outputList = CustomerRequestProcessor().processInputList(inputLines)
         displayOutput.addAll(outputList)

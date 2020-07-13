@@ -11,6 +11,7 @@ import com.example.dropchallenge.utils.InternetHelper
 import com.example.dropchallenge.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 
+
 class BeerListViewModel(
     schedulerProvider: SchedulerProvider,
     compositeDisposable: CompositeDisposable,
@@ -25,12 +26,12 @@ class BeerListViewModel(
     private val loadingMLD: MutableLiveData<Boolean> = MutableLiveData()
     val loadingLD: LiveData<Boolean> = loadingMLD
 
-    val beerCellMap = hashMapOf<Int,BeerTypeName>()
+    private val beerCellMap = hashMapOf<Int, BeerTypeName>()
 
     fun passArguments(beerCellList: List<String>) {
-        beerCellList.mapNotNull {  BeerTypeName.values().find { name -> name.type == it } }
+        beerCellList.mapNotNull { BeerTypeName.values().find { name -> name.type == it } }
             .forEachIndexed { index, beerTypeName ->
-                beerCellMap[index+1] = beerTypeName
+                beerCellMap[index + 1] = beerTypeName
             }
         loadingMLD.postValue(true)
         punkRepository.getBeerList(1)
@@ -52,8 +53,8 @@ class BeerListViewModel(
 
     }
 
-    private fun mapToEntity(beer: Beer, beerCellMap: Map<Int,BeerTypeName>): BeerListItemEntity? {
-        val beerTypeName: BeerTypeName = beerCellMap[beer.id]?: return null
-        return BeerListItemEntity(beer.id,beer.name, beer.imageUrl, beer.abv, beerTypeName)
+    private fun mapToEntity(beer: Beer, beerCellMap: Map<Int, BeerTypeName>): BeerListItemEntity? {
+        val beerTypeName: BeerTypeName = beerCellMap[beer.id] ?: return null
+        return BeerListItemEntity(beer.id, beer.name, beer.imageUrl, beer.abv, beerTypeName)
     }
 }

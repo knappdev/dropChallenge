@@ -34,8 +34,9 @@ class BeerDetailViewModel(
     val beer: Beer? = null
 
     fun passArguments(beerId: Int) {
-        if (beerId == -1) {
+        if (beerId == -1 || !internetConnectionWithMessage()) {
             notAvailableMLD.postValue(true)
+            return
         }
         loadingMLD.postValue(true)
         punkRepository.getBeer(beerId)
@@ -45,7 +46,7 @@ class BeerDetailViewModel(
                 processBeerDetail(it.firstOrNull())
 
             }, {
-                Log.e("TAG","error",it)
+                Log.e("TAG", "error", it)
                 handleNetworkError(it)
                 notAvailableMLD.postValue(true)
                 loadingMLD.postValue(false)
@@ -55,7 +56,7 @@ class BeerDetailViewModel(
     }
 
     private fun processBeerDetail(nullableBeer: Beer?) {
-        val beer = nullableBeer ?: run{
+        val beer = nullableBeer ?: run {
             notAvailableMLD.postValue(true)
             return
         }
@@ -73,10 +74,9 @@ class BeerDetailViewModel(
         )
     }
 
-    fun onClickHop(hop: Hop, isChecked:Boolean) {
-        beer?.let {beer ->
-            beerRepository.updateBeer(beer, hop,isChecked)
+    fun onClickHop(hop: Hop, isChecked: Boolean) {
+        beer?.let { beer ->
+            beerRepository.updateBeer(beer, hop, isChecked)
         }
-
     }
 }
