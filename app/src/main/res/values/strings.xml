@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DropChallenge</string>
+    <string name="no_internet_error">No internet connection</string>
+    <string name="title_activity_beer_list">BeerListActivity</string>
+    <string name="title_activity_beer_detail">BeerDetailActivity</string>
+    <string name="beer_detail_not_available">Beer Detail not available</string>
+</resources>

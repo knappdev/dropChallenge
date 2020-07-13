@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.list.view.BeerListActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress_bar"
+            android:maxHeight="100dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/abvView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameView"
+            tools:text="ABV" />
+
+        <TextView
+            android:id="@+id/descriptionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/abvView"
+            android:ellipsize="end"
+            android:maxLines="4"
+            tools:text="description" />
+
+        <LinearLayout
+            android:id="@+id/hopsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionView"
+
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/maltsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hopsLayout"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/methodLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maltsLayout"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/notAvailableView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/beer_detail_not_available"
+            android:textSize="30dp"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
